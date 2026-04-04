@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/my_http_server.dir/test/my_http_server.cpp.o -o ../bin/exe/my_http_server  src/liblsylar.a -ldl /usr/lib/x86_64-linux-gnu/libyaml-cpp.so.0.7.0 -lpthread -lssl -lcrypto -lmysqlcppconn 

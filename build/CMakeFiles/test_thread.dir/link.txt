@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/test_thread.dir/test/test_thread.cpp.o -o ../bin/exe/test_thread  src/liblsylar.a -ldl /usr/lib/x86_64-linux-gnu/libyaml-cpp.so.0.7.0 -lpthread -lssl -lcrypto -lmysqlcppconn 
