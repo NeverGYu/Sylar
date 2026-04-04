@@ -90,6 +90,9 @@
         "filesystem": "cpp",
         "regex": "cpp",
         "*.inc": "cpp",
-        "queue": "cpp"
+        "queue": "cpp",
+        "ranges": "cpp",
+        "span": "cpp",
+        "coroutine": "cpp"
     }
 }

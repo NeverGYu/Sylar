@@ -40,10 +40,13 @@ void Session::setSessionManager(SessionManager* val)
     m_sessionManager = val;
 }
 
-void Session::setValue(std::string &key, std::string &value)
-{
-    RWMutexType::WriteLock lock(m_mutex);
-    m_datas[key] = value;
+void Session::setValue(const std::string &key, const std::string &value)
+{   
+    {
+        RWMutexType::WriteLock lock(m_mutex);
+        m_datas[key] = value;
+    }
+
     // 如果设置了manager，自动保存更改
     if (m_sessionManager)
     {

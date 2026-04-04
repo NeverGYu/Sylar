@@ -1,6 +1,6 @@
 src/CMakeFiles/lsylar.dir/base/stream.cpp.o: \
- /home/gch/sylar/src/base/stream.cpp /usr/include/stdc-predef.h \
- /home/gch/sylar/include/base/stream.hpp /usr/include/c++/11/memory \
+ /root/workspace/sylar/src/base/stream.cpp /usr/include/stdc-predef.h \
+ /root/workspace/sylar/include/base/stream.hpp /usr/include/c++/11/memory \
  /usr/include/c++/11/bits/stl_algobase.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -199,8 +199,8 @@ src/CMakeFiles/lsylar.dir/base/stream.cpp.o: \
  /usr/include/c++/11/bits/uses_allocator_args.h \
  /usr/include/c++/11/pstl/glue_memory_defs.h \
  /usr/include/c++/11/pstl/execution_defs.h \
- /home/gch/sylar/include/base/bytearray.hpp /usr/include/c++/11/vector \
- /usr/include/c++/11/bits/stl_vector.h \
+ /root/workspace/sylar/include/base/bytearray.hpp \
+ /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_vector.h \
  /usr/include/c++/11/bits/stl_bvector.h \
  /usr/include/c++/11/bits/vector.tcc \
  /usr/include/x86_64-linux-gnu/sys/socket.h \

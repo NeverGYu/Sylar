@@ -297,7 +297,7 @@ private:
     uint32_t m_port;                    // 端口号
     uint32_t m_maxSize;                 // 最大连接数
     uint32_t m_maxAlivetime;            // 单个连接的最大存活时间
-    uint32_t m_maxRequest;             // 单个连接的最大复用次数
+    uint32_t m_maxRequest;              // 单个连接的最大复用次数
     MutexType m_mutex;                  //  互斥锁
     std::list<HttpConnection*> m_conns; //连接池
     std::atomic<int32_t> m_total = {0}; // 当前连接池的可用连接数量

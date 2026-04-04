@@ -44,7 +44,7 @@ IOManager::IOManager(size_t threads, bool use_caller, const std::string &name)
     // 默认设置64个大小
     contextResize(32);
 
-    // 默认启动 协程调度器Scheduler
+    // 默认启动协程调度器Scheduler
     start();
 }
 
@@ -451,7 +451,7 @@ void IOManager::idle()
             epoll_event& event = events[i];
             if (event.data.fd == m_tickleFds[0])
             {
-                // ticklefd[0]用于通知协程调度，这时只需要把管道里的内容读完即可
+                // ticklefd[0] 用于通知协程调度，这时只需要把管道里的内容读完即可
                 uint8_t dummy[256];
                 while (read(m_tickleFds[0], dummy, sizeof(dummy)) > 0)
                     ;
@@ -508,11 +508,11 @@ void IOManager::idle()
             }
         }
         /**
-         * 一旦处理完所有的事件，idle协程yield，这样可以让调度协程(Scheduler::run)重新检查是否有新任务要调度
-         * 上面triggerEvent实际也只是把对应的fiber重新加入调度，要执行的话还要等idle协程退出
+         * 一旦处理完所有的事件，idle协程 yield，这样可以让调度协程 (Scheduler::run) 重新检查是否有新任务要调度
+         * 上面 triggerEvent 实际也只是把对应的 fiber 重新加入调度，要执行的话还要等 idle 协程退出
          */ 
         Fiber::ptr cur = Fiber::GetThis();
-        auto raw_ptr   = cur.get();
+        auto raw_ptr = cur.get();
         cur.reset();
 
         raw_ptr->yield();

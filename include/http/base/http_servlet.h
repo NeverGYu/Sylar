@@ -142,6 +142,11 @@ public:
     /**
      *  @brief 添加路由（精确匹配） 
      */
+    void addRoute(HttpMethod method, const std::string &path, Servlet::ptr servlet);
+
+    /**
+     *  @brief 添加路由（精确匹配） 
+     */
     void addRoute(HttpMethod method, const std::string& path, FunctionServlet::ptr servlet);
 
     /**
@@ -255,14 +260,14 @@ private:
     void extractPathParameters(const std::smatch &match, HttpRequest::ptr req);
 
 private:
-    RWMutexType m_mutex;                                                            // 读写锁
-    std::unordered_map<std::string, Servlet::ptr> m_datas;                          // 粗精准匹配 (uri --> Servlet)
-    std::vector<std::pair<std::string, Servlet::ptr>> m_globs;                      // 粗模糊匹配 (uri --> Servlets)
-    Servlet::ptr m_default;                                                         // 默认Servlet
-    std::unordered_map<RouteKey, Servlet::ptr, RouteKeyHash> m_routes;              // 细精确匹配 (method + url --> Servlet)
-    std::unordered_map<RouteKey, FunctionServlet::callback, RouteKeyHash> m_routecbs;    // 细精确匹配回调函数
-    std::vector<RouteServletObj> m_regexs;                                          // 动态路由 (uri + regex --> Servlet)
-    std::vector<RouteCallbackObj> m_regexcbs;                                       // 动态路由回调 
+    RWMutexType m_mutex;                                                                // 读写锁
+    std::unordered_map<std::string, Servlet::ptr> m_datas;                              // 粗精准匹配 (uri --> Servlet)
+    std::vector<std::pair<std::string, Servlet::ptr>> m_globs;                          // 粗模糊匹配 (uri --> Servlets)
+    Servlet::ptr m_default;                                                             // 默认Servlet
+    std::unordered_map<RouteKey, Servlet::ptr, RouteKeyHash> m_routes;                  // 细精确匹配 (method + url --> Servlet)
+    std::unordered_map<RouteKey, FunctionServlet::callback, RouteKeyHash> m_routecbs;   // 细精确匹配回调函数
+    std::vector<RouteServletObj> m_regexs;                                              // 动态路由 (uri + regex --> Servlet)
+    std::vector<RouteCallbackObj> m_regexcbs;                                           // 动态路由回调 
 };
 
 

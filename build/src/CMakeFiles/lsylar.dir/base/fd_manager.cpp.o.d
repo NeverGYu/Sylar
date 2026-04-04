@@ -1,7 +1,7 @@
 src/CMakeFiles/lsylar.dir/base/fd_manager.cpp.o: \
- /home/gch/sylar/src/base/fd_manager.cpp /usr/include/stdc-predef.h \
- /home/gch/sylar/include/base/fd_manager.h /usr/include/c++/11/memory \
- /usr/include/c++/11/bits/stl_algobase.h \
+ /root/workspace/sylar/src/base/fd_manager.cpp /usr/include/stdc-predef.h \
+ /root/workspace/sylar/include/base/fd_manager.h \
+ /usr/include/c++/11/memory /usr/include/c++/11/bits/stl_algobase.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -202,9 +202,9 @@ src/CMakeFiles/lsylar.dir/base/fd_manager.cpp.o: \
  /usr/include/c++/11/bits/stl_vector.h \
  /usr/include/c++/11/bits/stl_bvector.h \
  /usr/include/c++/11/bits/vector.tcc \
- /home/gch/sylar/include/base/thread.h \
- /home/gch/sylar/include/base/noncopyable.h \
- /home/gch/sylar/include/base/mutex.h /usr/include/c++/11/thread \
+ /root/workspace/sylar/include/base/thread.h \
+ /root/workspace/sylar/include/base/noncopyable.h \
+ /root/workspace/sylar/include/base/mutex.h /usr/include/c++/11/thread \
  /usr/include/c++/11/stop_token /usr/include/c++/11/atomic \
  /usr/include/c++/11/bits/std_thread.h /usr/include/c++/11/semaphore \
  /usr/include/c++/11/bits/semaphore_base.h \
@@ -222,8 +222,8 @@ src/CMakeFiles/lsylar.dir/base/fd_manager.cpp.o: \
  /usr/include/c++/11/bits/unordered_map.h \
  /usr/include/c++/11/bits/erase_if.h /usr/include/c++/11/list \
  /usr/include/c++/11/bits/stl_list.h /usr/include/c++/11/bits/list.tcc \
- /home/gch/sylar/include/base/singleton.h \
- /home/gch/sylar/include/base/hook.h /usr/include/fcntl.h \
+ /root/workspace/sylar/include/base/singleton.h \
+ /root/workspace/sylar/include/base/hook.h /usr/include/fcntl.h \
  /usr/include/x86_64-linux-gnu/bits/fcntl.h \
  /usr/include/x86_64-linux-gnu/bits/fcntl-linux.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h \

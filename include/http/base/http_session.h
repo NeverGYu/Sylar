@@ -2,6 +2,7 @@
 #include "../stream/socket_stream.hpp"
 #include "http.h"
 #include <memory>
+#include <string>
 
 namespace sylar{
 namespace http{
@@ -41,6 +42,7 @@ public:
     
 private:
     SocketStream::ptr m_stream;
+    std::string m_recvBuffer;
 };
 
 }

@@ -1,1 +1,1 @@
-/usr/bin/g++  -g -rdynamic -fPIC -g CMakeFiles/test_http_server.dir/test/test_http_server.cpp.o -o ../bin/exe/test_http_server  -Wl,-rpath,/usr/local/lib src/liblsylar.a -ldl /usr/local/lib/libyaml-cpp.so.0.8.0 -lpthread -lssl -lcrypto 
+/usr/bin/c++ CMakeFiles/test_http_server.dir/test/test_http_server.cpp.o -o ../bin/exe/test_http_server  src/liblsylar.a -ldl /usr/lib/x86_64-linux-gnu/libyaml-cpp.so.0.7.0 -lpthread -lssl -lcrypto -lmysqlcppconn 

@@ -12,7 +12,7 @@ void MemorySessionStorage::save(Session::ptr session)
 
 Session::ptr MemorySessionStorage::load(const std::string& sessionId)
 {
-    RWMutexType::ReadLock lock(m_mutex);
+    RWMutexType::WriteLock lock(m_mutex);
     auto it  = m_sessions.find(sessionId);
     if (it != m_sessions.end())
     {

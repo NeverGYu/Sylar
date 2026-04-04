@@ -5,6 +5,8 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <fstream>
+
 
 namespace sylar
 {
@@ -157,40 +159,84 @@ public:
  * @brief 文件辅助类
  */
 class FSUtil {
-    public:
-        static void ListAllFile(std::vector<std::string>& files
+public:
+    static void ListAllFile(std::vector<std::string>& files
                                 ,const std::string& path
                                 ,const std::string& subfix);
 
-        static bool Mkdir(const std::string& dirname);
+    static bool Mkdir(const std::string& dirname);
 
-        static bool IsRunningPidfile(const std::string& pidfile);
+    static bool IsRunningPidfile(const std::string& pidfile);
 
-        static bool Rm(const std::string& path);
+    static bool Rm(const std::string& path);
 
-        static bool Mv(const std::string& from, const std::string& to);
+    static bool Mv(const std::string& from, const std::string& to);
 
-        static bool Realpath(const std::string& path, std::string& rpath);
+    static bool Realpath(const std::string& path, std::string& rpath);
 
-        static bool Symlink(const std::string& frm, const std::string& to);
+    static bool Symlink(const std::string& frm, const std::string& to);
 
-        static bool Unlink(const std::string& filename, bool exist = false);
+    static bool Unlink(const std::string& filename, bool exist = false);
 
-        static std::string Dirname(const std::string& filename);
+    static std::string Dirname(const std::string& filename);
 
-        static std::string Basename(const std::string& filename);
+    static std::string Basename(const std::string& filename);
 
-        static bool OpenForRead(std::ifstream& ifs, const std::string& filename
+    static bool OpenForRead(std::ifstream& ifs, const std::string& filename
                         ,std::ios_base::openmode mode);
 
-        static bool OpenForWrite(std::ofstream& ofs, const std::string& filename
+    static bool OpenForWrite(std::ofstream& ofs, const std::string& filename
                         ,std::ios_base::openmode mode);
-    };
+};
 
 
-
-
-
+class FileUtil
+{
+public:
+    FileUtil(std::string filePath)
+        : filePath_(filePath)
+        , file_(filePath, std::ios::binary) // 打开文件，二进制模式
+    {}
+    
+    ~FileUtil()
+    {
+        file_.close();
+    }
+    
+    // 判断是否是有效路径
+    bool isValid() const { return file_.is_open(); }
+        
+    // 重置打开默认文件
+    void resetDefaultFile()
+    {
+        file_.close();
+        file_.open("/Gomoku/GomokuServer/resource/NotFound.html", std::ios::binary);
+    }
+    
+    uint64_t size()
+    {
+        file_.seekg(0, std::ios::end); // 定位到文件末尾
+        uint64_t fileSize = file_.tellg();
+        file_.seekg(0, std::ios::beg); // 返回到文件开头
+        return fileSize;
+    }
+        
+    void readFile(std::vector<char>& buffer)
+    {
+        if (file_.read(buffer.data(), size()))
+        {
+            std::cout << "File content load into memory (" << size() << " bytes)" << std::endl;
+        }    
+        else
+        {
+            std::cout  << "File read failed" << std::endl;
+        }
+    }
+    
+private:
+    std::string     filePath_;
+    std::ifstream   file_;
+};
 
 } 
 

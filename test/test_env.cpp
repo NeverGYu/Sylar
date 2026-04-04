@@ -1,6 +1,6 @@
 #include "sylar.h"
 
-sylar::Logger::ptr g_logger = SYLAR_LOG_ROOT();
+static sylar::Logger::ptr g_logger = SYLAR_LOG_ROOT();
 
 sylar::Env *g_env = sylar::EnvMgr::GetInstance();
 

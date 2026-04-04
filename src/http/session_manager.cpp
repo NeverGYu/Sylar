@@ -11,27 +11,47 @@ SessionManager::SessionManager(std::unique_ptr<SessionStorage> storage)
 
 Session::ptr SessionManager::getSession(const HttpRequest::ptr req,  const HttpResponse::ptr rsp)
 {
-    // 从请求中获取或创建会话，也就是说，如果请求中包含会话ID，则从存储中加载会话，否则创建一个新的会话
-    std::string sessionId = getSessionIdFromCookie(req);
-    // 定义初始session
-    std::shared_ptr<Session> session;
-    // 如果sessionId存在，则取出对应的session
-    if (!sessionId.empty())
-    {
-        session = m_storage->load(sessionId);
+    // 先确保 cookie 已解析（如果你的 HttpRequest::getCookie 依赖 initCookies）
+    if (req) {
+        req->initCookies();
     }
-    // 如果会话不存在，或者会话已过期
-    if (!session || session->isExpired())
-    {
+
+    // 优先从 cookie 里拿 sessionId
+    std::string sessionId;
+    if (req) {
+        sessionId = req->getCookie("sessionId");
+        if (sessionId.empty()) {
+            // 兼容旧逻辑：从原始 Cookie 头解析
+            sessionId = getSessionIdFromCookie(req);
+        }
+    }
+
+    Session::ptr session;
+
+    if (!sessionId.empty()) {
+        session = m_storage->load(sessionId);
+        if (session && session->isExpired()) {
+            m_storage->remove(sessionId);
+            session.reset();
+        }
+    }
+
+    bool created = false;
+    if (!session) {
         sessionId = generateSessionId();
         session = std::make_shared<Session>(sessionId, this);
+        created = true;
+    }
+
+    session->setSessionManager(this);
+    session->refresh();
+    m_storage->save(session);
+
+    // 仅新建时下发 Set-Cookie，避免覆盖已存在 cookie
+    if (created && rsp) {
         setSessionCookie(sessionId, rsp);
     }
-    
-    // 为现有会话设置管理器
-    session->setSessionManager(this); 
-    session->refresh();
-    m_storage->save(session);  // 这里可能有问题，需要确保正确保存会话
+
     return session;
 }
 
@@ -69,10 +89,12 @@ std::string SessionManager::getSessionIdFromCookie(const HttpRequest::ptr req)
 
     if (!cookie.empty())
     {
-        size_t pos = cookie.find("SYLARSESSIONID=");
+        const std::string key = "sessionId=";
+        size_t pos = cookie.find(key);
+        
         if (pos != std::string::npos)
         {
-            pos += 10; // 跳过"sessionId="
+            pos += key.size(); // 跳过"sessionId="
             size_t end = cookie.find(';', pos);
             if (end != std::string::npos)
             {

@@ -31,5 +31,8 @@
 #include "../middleware/middleware.h"
 #include "../middleware/cors/CorsConfig.h"
 #include "../middleware/cors/CorsMiddleware.h"
+#include "../db/mysql.h"
+#include "../db/db_pool.h"
+#include "../db/db_connection.h"
 #include "../ssl/ssl_config.h"
 #include "../ssl/ssl_context.h"

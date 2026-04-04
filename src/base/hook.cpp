@@ -69,7 +69,7 @@ void hook_init()
 }
 
 /**
- *  @brief 这段代码的意义任然是在main函数之前就执行，这样就可以提前注册好hook的函数 
+ *  @brief 这段代码的意义任然是在 main 函数之前就执行，这样就可以提前注册好hook的函数 
  */
 struct _HookIniter
 {

@@ -106,7 +106,7 @@ private:
     void* m_stack = nullptr;            //  协程栈地址  
     std::function<void()> m_cb;         //  协程入口函数
     State m_state = READY;              //  协程的状态
-    bool m_runInScheduler;              // 本协程是否参与调度器调度
+    bool m_runInScheduler;              //  本协程是否参与调度器调度
 };
 
 } 

@@ -49,10 +49,7 @@ public:
     void detach();
     
     /**
-     *  @brief 让线程在后台运行   
-     */
-    /**
-     *  @brief 返回当前线程名称
+     *  @brief 返回当前线程对象
      */
     static Thread* GetThis();
 
@@ -73,7 +70,7 @@ private:
 private:
     std::string m_name;             // 当前线程的名字
     pid_t m_id = -1;                // 当前线程的id
-    pthread_t m_thread = 0;         // 当前线程结构
+    pthread_t m_thread = 0;         // 当前的子线程对象
     std::function<void()> m_cb;     // 当前线程可执行的回调函数
     Semaphore m_semaphore;          // 当前线程的信号量
 };

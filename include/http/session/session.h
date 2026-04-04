@@ -51,7 +51,7 @@ public:
     /**
      *   @brief 刷新超时时间
      */
-    void refresh() { m_expiredTime = GetCurrentMS() + maxAge; }
+    void refresh() { m_expiredTime = GetCurrentMS() + maxAge * 1000ULL; }
 
     /**
      *  @brief 获得当前的会话管理 
@@ -66,7 +66,7 @@ public:
     /**
      *  @brief 存储会话数据 
      */
-    void setValue(std::string& key, std::string& value);
+    void setValue(const std::string& key, const std::string& value);
 
     /**
      *  @brief 获取指定内容的会话数据 

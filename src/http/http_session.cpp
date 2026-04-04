@@ -1,5 +1,6 @@
 #include "http_session.h"
 #include "http_parser.h"
+#include <cstring>
 
 namespace sylar{
 namespace http{
@@ -13,55 +14,67 @@ HttpSession::HttpSession(SocketStream::ptr stream, bool owner)
 
 HttpRequest::ptr HttpSession::recvRequest() 
 {
-    // 定义HttpRequest解析器
     HttpRequestParser::ptr parser(new HttpRequestParser);
-    // 获得最大可解析的长度
     uint64_t buff_size = HttpRequestParser::GetHttpRequestBufferSize();
-    // 定义一个字符串数组
     std::shared_ptr<char> buffer(new char[buff_size], [](char* ptr) { delete[] ptr; }); 
-    // 获得原始数组的指针
     char* data = buffer.get();
-    // 定义读取数据的偏移量
     int offset = 0;
-    // 通过do-while循环来解析请求
-    do
+
+    if (!m_recvBuffer.empty())
     {
-        // read函数的调用过程: 此处的read -> SocketStream的read -> Socket的recv -> 此处的Socket是accept返回的socket -> 用来接受对方发送的请求
+        if (m_recvBuffer.size() > buff_size)
+        {
+            m_stream->close();
+            m_recvBuffer.clear();
+            return nullptr;
+        }
+        offset = (int)m_recvBuffer.size();
+        memcpy(data, m_recvBuffer.data(), offset);
+        m_recvBuffer.clear();
+    }
+
+    while (true)
+    {
+        if (offset > 0)
+        {
+            size_t nparse = parser->execute(data, offset);
+            if (parser->hasError())
+            {
+                m_stream->close();
+                m_recvBuffer.clear();
+                return nullptr;
+            }
+
+            offset -= (int)nparse;
+            if (offset == (int)buff_size && !parser->isFinished())
+            {
+                m_stream->close();
+                m_recvBuffer.clear();
+                return nullptr;
+            }
+
+            if (parser->isFinished())
+            {
+                if (offset > 0)
+                {
+                    m_recvBuffer.assign(data, offset);
+                }
+                parser->getHttpRequest()->init();
+                return parser->getHttpRequest();
+            }
+        }
+
         int len = m_stream->read(data + offset, buff_size - offset);
-        // 如果没有读取到数据就关闭连接
         if (len <= 0)
         {
             m_stream->close();
+            m_recvBuffer.clear();
             return nullptr;
         }
+
         SYLAR_LOG_DEBUG(g_logger) << "read bytes: " << len;
-        SYLAR_LOG_DEBUG(g_logger) << "raw data: " << std::string(data, len);
-        // 此处代表读取到了数据
-        len += offset;
-        // 调用解析器来进行解析: nparse表示解析了的长度
-        size_t nparse = parser->execute(data, len);
-        // 判断解析结果
-        if (parser->hasError())
-        {
-            m_stream->close();
-            return nullptr;
-        }
-        // 此时的offset 表示未解析的长度
-        offset = len - nparse;
-        // 这表示解析长度超过了最大解析长度
-        if (offset == (int)buff_size)
-        {
-            m_stream->close();
-            return nullptr;
-        }
-        // 这表示解析终止
-        if (parser->isFinished()) {
-            break;
-        }
-    } while (true);
-    // 设置连接状态
-    parser->getHttpRequest()->init();
-    return parser->getHttpRequest();
+        offset += len;
+    }
 }
 
 int HttpSession::sendResponse(HttpResponse::ptr rsp) 
@@ -75,6 +88,7 @@ int HttpSession::sendResponse(HttpResponse::ptr rsp)
 void HttpSession::close()
 {
     m_stream->close();
+    m_recvBuffer.clear();
 }
 
 }

@@ -1,1 +1,0 @@
-/usr/bin/g++ -g -g CMakeFiles/my_test.dir/test.cpp.o CMakeFiles/my_test.dir/__/src/config.cpp.o CMakeFiles/my_test.dir/__/src/main.cpp.o CMakeFiles/my_test.dir/__/src/util.cpp.o -o ../../bin/my_test   -L/home/gch/高性能服务器框架/thirdparty/yaml-cpp/build  -Wl,-rpath,/home/gch/高性能服务器框架/thirdparty/yaml-cpp/build -lyaml-cpp 

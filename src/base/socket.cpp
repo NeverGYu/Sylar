@@ -374,7 +374,7 @@ bool Socket::close()
     {
         return true;
     }
-    m_isConnected = true;
+    m_isConnected = false;
     if (m_sock != -1)
     {
         ::close(m_sock);

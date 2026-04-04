@@ -1,1 +1,1 @@
-/usr/bin/g++  -g -rdynamic -fPIC -g CMakeFiles/test_ssl.dir/test/test_ssl.cpp.o -o ../bin/exe/test_ssl  -Wl,-rpath,/usr/local/lib src/liblsylar.a -ldl /usr/local/lib/libyaml-cpp.so.0.8.0 -lpthread -lssl -lcrypto 
+/usr/bin/c++ CMakeFiles/test_ssl.dir/test/test_ssl.cpp.o -o ../bin/exe/test_ssl  src/liblsylar.a -ldl /usr/lib/x86_64-linux-gnu/libyaml-cpp.so.0.7.0 -lpthread -lssl -lcrypto -lmysqlcppconn 

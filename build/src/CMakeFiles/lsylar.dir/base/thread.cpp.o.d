@@ -1,8 +1,8 @@
 src/CMakeFiles/lsylar.dir/base/thread.cpp.o: \
- /home/gch/sylar/src/base/thread.cpp /usr/include/stdc-predef.h \
- /home/gch/sylar/include/base/thread.h \
- /home/gch/sylar/include/base/noncopyable.h \
- /home/gch/sylar/include/base/mutex.h /usr/include/c++/11/thread \
+ /root/workspace/sylar/src/base/thread.cpp /usr/include/stdc-predef.h \
+ /root/workspace/sylar/include/base/thread.h \
+ /root/workspace/sylar/include/base/noncopyable.h \
+ /root/workspace/sylar/include/base/mutex.h /usr/include/c++/11/thread \
  /usr/include/c++/11/compare /usr/include/c++/11/concepts \
  /usr/include/c++/11/type_traits \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
@@ -219,7 +219,7 @@ src/CMakeFiles/lsylar.dir/base/thread.cpp.o: \
  /usr/include/c++/11/pstl/glue_memory_defs.h \
  /usr/include/c++/11/pstl/execution_defs.h /usr/include/c++/11/list \
  /usr/include/c++/11/bits/stl_list.h /usr/include/c++/11/bits/list.tcc \
- /home/gch/sylar/include/base/log.h /usr/include/c++/11/iostream \
+ /root/workspace/sylar/include/base/log.h /usr/include/c++/11/iostream \
  /usr/include/c++/11/istream /usr/include/c++/11/bits/istream.tcc \
  /usr/include/c++/11/sstream /usr/include/c++/11/bits/sstream.tcc \
  /usr/include/c++/11/fstream /usr/include/c++/11/bits/codecvt.h \
@@ -229,6 +229,6 @@ src/CMakeFiles/lsylar.dir/base/thread.cpp.o: \
  /usr/include/c++/11/map /usr/include/c++/11/bits/stl_tree.h \
  /usr/include/c++/11/bits/stl_map.h \
  /usr/include/c++/11/bits/stl_multimap.h \
- /home/gch/sylar/include/base/util.h /usr/include/c++/11/cxxabi.h \
+ /root/workspace/sylar/include/base/util.h /usr/include/c++/11/cxxabi.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/cxxabi_tweaks.h \
- /home/gch/sylar/include/base/singleton.h
+ /root/workspace/sylar/include/base/singleton.h

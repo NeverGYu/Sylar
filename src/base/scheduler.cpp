@@ -10,7 +10,7 @@ static sylar::Logger::ptr g_logger = SYLAR_LOG_NAME("system");
 
 // 每个线程都有一个调度器
 static thread_local Scheduler* t_schedule = nullptr;
-//  每个线程都有一个协程
+// 每个线程都有一个主协程
 static thread_local Fiber* t_schedule_fiber = nullptr;
 
 Scheduler::Scheduler(size_t threads, bool use_caller, const std::string& name)
@@ -28,14 +28,14 @@ Scheduler::Scheduler(size_t threads, bool use_caller, const std::string& name)
 
         /**
          * caller 线程的主协程不会被调度协程run进行调度，而且，线程的调度协程停止时，应该返回到caller的主协程
-         * 在user caller情况下，把caller线程的主协程暂时保存起来，等调度协程结束时，再resume caller协程
+         * 在 user caller 情况下，把 caller 线程的主协程暂时保存起来，等调度协程结束时，再resume caller协程
          */
 
-         m_rootFiber.reset(new Fiber(std::bind(&Scheduler::run, this), 0, false));   // 创建主协程后的调度协程
-         Thread::setName(m_name);               // 设置线程名称
-         t_schedule_fiber = m_rootFiber.get();  // 保存调度协程
-         m_rootThread = sylar::GetThreadId();   // 设置线程id
-         m_tids.push_back(m_rootThread);    // 将当前线程id保存到线程id集合中
+        m_rootFiber.reset(new Fiber(std::bind(&Scheduler::run, this), 0, false));   // 创建主协程后的调度协程
+        Thread::setName(m_name);               // 设置线程名称
+        t_schedule_fiber = m_rootFiber.get();  // 保存调度协程
+        m_rootThread = sylar::GetThreadId();   // 设置线程id
+        m_tids.push_back(m_rootThread);    // 将当前线程id保存到线程id集合中
     }
     else
     {
@@ -181,7 +181,7 @@ void Scheduler::run()
             while (it != m_tasks.end())
             {
                 /**
-                 *  @brief 情况一：当前任务指定了调度线程，但不是当前线程
+                 *  @brief 情况一：当前任务指定了所属线程，但不是当前线程
                  */
                 if (it->threadid != -1 && it->threadid != sylar::GetThreadId())
                 {

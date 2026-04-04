@@ -1,6 +1,6 @@
 src/CMakeFiles/lsylar.dir/base/socket.cpp.o: \
- /home/gch/sylar/src/base/socket.cpp /usr/include/stdc-predef.h \
- /home/gch/sylar/include/base/socket.hpp /usr/include/c++/11/memory \
+ /root/workspace/sylar/src/base/socket.cpp /usr/include/stdc-predef.h \
+ /root/workspace/sylar/include/base/socket.hpp /usr/include/c++/11/memory \
  /usr/include/c++/11/bits/stl_algobase.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -217,8 +217,8 @@ src/CMakeFiles/lsylar.dir/base/socket.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h \
  /usr/include/c++/11/iostream /usr/include/c++/11/istream \
  /usr/include/c++/11/bits/istream.tcc \
- /home/gch/sylar/include/base/address.hpp /usr/include/c++/11/vector \
- /usr/include/c++/11/bits/stl_vector.h \
+ /root/workspace/sylar/include/base/address.hpp \
+ /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_vector.h \
  /usr/include/c++/11/bits/stl_bvector.h \
  /usr/include/c++/11/bits/vector.tcc /usr/include/c++/11/map \
  /usr/include/c++/11/bits/stl_tree.h \
@@ -228,18 +228,19 @@ src/CMakeFiles/lsylar.dir/base/socket.cpp.o: \
  /usr/include/c++/11/bits/erase_if.h /usr/include/netinet/in.h \
  /usr/include/x86_64-linux-gnu/bits/in.h \
  /usr/include/x86_64-linux-gnu/sys/un.h /usr/include/string.h \
- /usr/include/strings.h /home/gch/sylar/include/base/noncopyable.h \
- /home/gch/sylar/include/base/log.h /usr/include/c++/11/sstream \
+ /usr/include/strings.h /root/workspace/sylar/include/base/noncopyable.h \
+ /root/workspace/sylar/include/base/log.h /usr/include/c++/11/sstream \
  /usr/include/c++/11/bits/sstream.tcc /usr/include/c++/11/fstream \
  /usr/include/c++/11/bits/codecvt.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
  /usr/include/c++/11/bits/fstream.tcc /usr/include/c++/11/cstdarg \
  /usr/include/c++/11/list /usr/include/c++/11/bits/stl_list.h \
- /usr/include/c++/11/bits/list.tcc /home/gch/sylar/include/base/util.h \
+ /usr/include/c++/11/bits/list.tcc \
+ /root/workspace/sylar/include/base/util.h \
  /usr/include/x86_64-linux-gnu/sys/time.h /usr/include/c++/11/cxxabi.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/cxxabi_tweaks.h \
- /home/gch/sylar/include/base/mutex.h /usr/include/c++/11/thread \
+ /root/workspace/sylar/include/base/mutex.h /usr/include/c++/11/thread \
  /usr/include/c++/11/stop_token /usr/include/c++/11/atomic \
  /usr/include/c++/11/bits/std_thread.h /usr/include/c++/11/semaphore \
  /usr/include/c++/11/bits/semaphore_base.h \
@@ -253,11 +254,11 @@ src/CMakeFiles/lsylar.dir/base/socket.cpp.o: \
  /usr/include/c++/11/bits/hashtable_policy.h \
  /usr/include/c++/11/bits/enable_special_members.h \
  /usr/include/c++/11/bits/unordered_map.h \
- /home/gch/sylar/include/base/singleton.h \
- /home/gch/sylar/include/base/macro.h /usr/include/assert.h \
- /home/gch/sylar/include/base/fd_manager.h \
- /home/gch/sylar/include/base/thread.h \
- /home/gch/sylar/include/base/hook.h /usr/include/fcntl.h \
+ /root/workspace/sylar/include/base/singleton.h \
+ /root/workspace/sylar/include/base/macro.h /usr/include/assert.h \
+ /root/workspace/sylar/include/base/fd_manager.h \
+ /root/workspace/sylar/include/base/thread.h \
+ /root/workspace/sylar/include/base/hook.h /usr/include/fcntl.h \
  /usr/include/x86_64-linux-gnu/bits/fcntl.h \
  /usr/include/x86_64-linux-gnu/bits/fcntl-linux.h \
  /usr/include/linux/falloc.h /usr/include/x86_64-linux-gnu/bits/stat.h \
@@ -270,12 +271,12 @@ src/CMakeFiles/lsylar.dir/base/socket.cpp.o: \
  /usr/include/asm-generic/ioctl.h \
  /usr/include/x86_64-linux-gnu/bits/ioctl-types.h \
  /usr/include/x86_64-linux-gnu/sys/ttydefaults.h \
- /home/gch/sylar/include/base/iomanager.h \
- /home/gch/sylar/include/base/scheduler.h \
- /home/gch/sylar/include/base/fiber.h /usr/include/ucontext.h \
+ /root/workspace/sylar/include/base/iomanager.h \
+ /root/workspace/sylar/include/base/scheduler.h \
+ /root/workspace/sylar/include/base/fiber.h /usr/include/ucontext.h \
  /usr/include/x86_64-linux-gnu/bits/indirect-return.h \
  /usr/include/x86_64-linux-gnu/sys/ucontext.h \
  /usr/include/x86_64-linux-gnu/bits/types/stack_t.h \
- /home/gch/sylar/include/base/timer.h /usr/include/c++/11/set \
+ /root/workspace/sylar/include/base/timer.h /usr/include/c++/11/set \
  /usr/include/c++/11/bits/stl_set.h \
  /usr/include/c++/11/bits/stl_multiset.h /usr/include/netinet/tcp.h

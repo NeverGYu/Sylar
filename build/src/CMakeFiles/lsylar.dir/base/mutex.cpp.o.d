@@ -1,6 +1,6 @@
 src/CMakeFiles/lsylar.dir/base/mutex.cpp.o: \
- /home/gch/sylar/src/base/mutex.cpp /usr/include/stdc-predef.h \
- /home/gch/sylar/include/base/mutex.h /usr/include/c++/11/thread \
+ /root/workspace/sylar/src/base/mutex.cpp /usr/include/stdc-predef.h \
+ /root/workspace/sylar/include/base/mutex.h /usr/include/c++/11/thread \
  /usr/include/c++/11/compare /usr/include/c++/11/concepts \
  /usr/include/c++/11/type_traits \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
@@ -217,4 +217,4 @@ src/CMakeFiles/lsylar.dir/base/mutex.cpp.o: \
  /usr/include/c++/11/pstl/glue_memory_defs.h \
  /usr/include/c++/11/pstl/execution_defs.h /usr/include/c++/11/list \
  /usr/include/c++/11/bits/stl_list.h /usr/include/c++/11/bits/list.tcc \
- /home/gch/sylar/include/base/noncopyable.h
+ /root/workspace/sylar/include/base/noncopyable.h

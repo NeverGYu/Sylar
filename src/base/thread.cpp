@@ -4,6 +4,7 @@ namespace sylar
 {
 
 static thread_local Thread* t_thread = nullptr;
+
 static thread_local std::string t_thread_name = "UNKNOWN";
 
 static sylar::Logger::ptr g_logger = SYLAR_LOG_NAME("system");
@@ -78,7 +79,7 @@ void Thread::detach()
 }
 
 /**
- *  @brief 返回当前线程名称
+ *  @brief 返回子线程对象
  */
 Thread* Thread::GetThis()
 {
@@ -86,7 +87,7 @@ Thread* Thread::GetThis()
 }
 
 /**
- *  @brief 返回当前线程的名称
+ *  @brief 返回子线程的名称
  */
 const std::string& Thread::GetName()
 {
@@ -94,7 +95,7 @@ const std::string& Thread::GetName()
 }
 
 /**
- *   @brief 设置线程的名称
+ *   @brief 设置子线程的名称
  */
 void Thread::setName(const std::string &name)
 {
@@ -114,6 +115,7 @@ void Thread::setName(const std::string &name)
  */
 void* Thread::run(void* arg)
 {
+
     Thread* thread = (Thread*)(arg);
     t_thread = thread;
     t_thread_name = thread->m_name;

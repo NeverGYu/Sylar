@@ -7,6 +7,7 @@ void test()
     sylar::http::HttpServer::ptr server(new sylar::http::HttpServer);
     
     sylar::Address::ptr addr = sylar::Address::LookupAnyIPAddress("0.0.0.0:8020");
+    
     if (!addr)
     {
         SYLAR_LOG_INFO(g_logger) << "access addr fails";

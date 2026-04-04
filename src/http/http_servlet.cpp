@@ -18,6 +18,12 @@ int32_t FunctionServlet::handle(HttpRequest::ptr req, HttpResponse::ptr rsp, Htt
 
 
 /*--------------------------------------------------  RouteServlet  ------------------------------------------------------*/
+void ServletDispatch::addRoute(HttpMethod method, const std::string &path, Servlet::ptr servlet) {
+    RWMutexType::WriteLock lock(m_mutex);
+    RouteKey key{method, path};
+    m_routes[key] = servlet;
+}
+
 void ServletDispatch::addRoute(HttpMethod method, const std::string &path, FunctionServlet::ptr servlet)
 {
     RWMutexType::WriteLock lock(m_mutex);

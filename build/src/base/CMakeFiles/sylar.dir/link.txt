@@ -1,1 +1,0 @@
-/usr/bin/g++  -g -rdynamic -fPIC -g CMakeFiles/sylar.dir/main.cpp.o -o ../../../bin/sylar  -Wl,-rpath,/usr/local/lib liblsylar.a -ldl /usr/local/lib/libyaml-cpp.so.0.8.0 -lpthread 

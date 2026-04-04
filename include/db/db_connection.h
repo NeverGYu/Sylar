@@ -13,10 +13,12 @@
 #include "../base/log.h"
 #include "../base/singleton.h"
 
-static sylar::Logger::ptr g_logger = SYLAR_LOG_NAME("system");
+
 
 namespace sylar{
 namespace db{
+
+static sylar::Logger::ptr g_logger = SYLAR_LOG_NAME("system");
 
 class DbConnection : public Noncopyable
 {
@@ -87,7 +89,7 @@ public:
      *  @param[in] args 可变参数 
      */
     template<typename... Args>
-    sql::ResultSet* executeUpdate(const std::string& sql, Args&&... args)
+    int executeUpdate(const std::string& sql, Args&&... args)
     {
         MutexType::Lock lock(m_mutex);
         try
@@ -95,7 +97,7 @@ public:
             // 直接创建新的预处理语句，不使用缓存
             std::unique_ptr<sql::PreparedStatement> stmt(m_dbconnection->prepareStatement(sql));
             bindParams(stmt.get(), 1, std::forward<Args>(args)...);
-            return stmt->executeUpdate();
+            return stmt->executeUpdate(); // returns the number of affected rows
         }
         catch(const sql::SQLException& e)
         {
@@ -107,7 +109,7 @@ private:
     /**
      *  @brief 辅助函数，用于递归终止条件 
      */
-    void bindParam(sql::PreparedStatement* , int) {}
+    void bindParams(sql::PreparedStatement* , int) {}
 
     /**
      *  @brief 辅助函数：用于绑定参数

@@ -14,6 +14,7 @@ namespace db{
 class DbConnectionPool : public Noncopyable
 {
 public:
+    friend class SingleTon<DbConnectionPool>;
     using ptr = std::shared_ptr<DbConnectionPool>;
     using RWMutexType = RWMutex;
 
@@ -62,5 +63,6 @@ private:
 };
 
 using db_pool = sylar::SingleTon<DbConnectionPool>;
+
 }
 }

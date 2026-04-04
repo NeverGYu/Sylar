@@ -114,6 +114,7 @@ static int on_request_message_complete_cb(http_parser* p)
     // SYLAR_LOG_DEBUG(g_logger) <<"on_request_message_complete_cb";
     HttpRequestParser* parser = static_cast<HttpRequestParser*>(p->data);
     parser->setFinished(true);
+    http_parser_pause(p, 1);
     return 0;
 }
 
@@ -376,13 +377,14 @@ HttpRequestParser::HttpRequestParser()
 size_t HttpRequestParser::execute(char* data, size_t len)
 {
     size_t nparsed = http_parser_execute(&m_parser, &s_request_settings, data, len);
+    bool paused_on_message = m_finished && HTTP_PARSER_ERRNO(&m_parser) == HPE_PAUSED;
     if (m_parser.upgrade)
     {
         //处理新协议，暂时不处理
         SYLAR_LOG_DEBUG(g_logger) << "found upgrade, ignore";
         setError(HPE_UNKNOWN);
     }
-    else if (m_parser.http_errno != 0)
+    else if (m_parser.http_errno != 0 && !paused_on_message)
     {
         SYLAR_LOG_DEBUG(g_logger) << "parse request fail: " << http_errno_name(HTTP_PARSER_ERRNO(&m_parser));
         setError((int8_t)m_parser.http_errno);

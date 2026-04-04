@@ -1,2 +1,0 @@
-/usr/bin/ar qc liblhttp.a CMakeFiles/lhttp.dir/http.cc.o CMakeFiles/lhttp.dir/http_parser_template.c.o
-/usr/bin/ranlib liblhttp.a

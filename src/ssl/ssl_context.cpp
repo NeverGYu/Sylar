@@ -92,16 +92,15 @@ bool SslContext::setupProtocol()
     switch (m_config.getVersion())
     {
         case SslVersion::TLS_1_0:
-            options |= SSL_OP_NO_TLSv1;
             break;
         case SslVersion::TLS_1_1:
-            options |= SSL_OP_NO_TLSv1_1;
+            options |= SSL_OP_NO_TLSv1;
             break;
         case SslVersion::TLS_1_2:
-            options |= SSL_OP_NO_TLSv1_2;
+            options |= SSL_OP_NO_TLSv1_1;
             break;
         case SslVersion::TLS_1_3:
-            options |= SSL_OP_NO_TLSv1_3;
+            options |= SSL_OP_NO_TLSv1_2;
             break;
     }
     SSL_CTX_set_options(m_ctx, options);
@@ -130,6 +129,7 @@ void SslContext::handleSslError(const char* msg)
     ERR_error_string_n(ERR_get_error(), buf, sizeof(buf));
     SYLAR_LOG_ERROR(g_logger) << msg << ": " << buf;
 }
+
 
 }
 }

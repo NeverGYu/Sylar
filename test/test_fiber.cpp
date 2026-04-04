@@ -1,6 +1,6 @@
 #include "sylar.h"
 
-sylar::Logger::ptr g_logger = SYLAR_LOG_ROOT();
+static sylar::Logger::ptr g_logger = SYLAR_LOG_ROOT();
 
 void run_in_fiber() {
     SYLAR_LOG_INFO(g_logger) << "run_in_fiber begin";

@@ -566,7 +566,7 @@ public:
             throw std::invalid_argument(name);
         }
 
-        typename ConfigVar<T>::ptr newConfigVar(std::make_shared<ConfigVar<T>>(name,description,val));
+        typename ConfigVar<T>::ptr newConfigVar(std::make_shared<ConfigVar<T>>(name, description, val));
         GetDatas()[name] = newConfigVar;
         return newConfigVar;
     }
@@ -583,8 +583,7 @@ public:
         {
             return nullptr;
         }
-        return std::dynamic_pointer_cast<ConfigVar<T>>(it->second);
-        
+        return std::dynamic_pointer_cast<ConfigVar<T>>(it->second);  
     }
 
     /**

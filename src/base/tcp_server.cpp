@@ -108,8 +108,7 @@ void TcpServer::startAccept(Socket::ptr sock)
             SYLAR_LOG_ERROR(g_logger) << "accept errno=" << errno
                                       << " errstr=" << strerror(errno);
         }
-    }
-    
+    } 
 }
 
 void TcpServer::handleClient(Socket::ptr client)

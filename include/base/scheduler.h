@@ -189,10 +189,10 @@ private:
     std::list<ScheduleTask> m_tasks;            // 任务队列
     std::vector<Tid> m_tids;                    // 线程池中包含的线程id
     size_t m_threadCount = 0;                   // 线程数量
-    std::atomic<size_t> m_activeCount = {0};   // 活跃线程数量
-    std::atomic<size_t> m_idleCount = {0};     // 不活跃线程数量
-    bool m_useCaller;                          // 判断是否执行Scheduler构造函数的线程
-    Fiber::ptr m_rootFiber;                     // 当 m_userCaller = true 时，主协程以后的第一个协程（）
+    std::atomic<size_t> m_activeCount = {0};    // 活跃线程数量
+    std::atomic<size_t> m_idleCount = {0};      // 不活跃线程数量
+    bool m_useCaller;                           // 判断是否执行Scheduler构造函数的线程
+    Fiber::ptr m_rootFiber;                     // 当 m_userCaller = true 时，主协程以后的第一个协程
     uint64_t m_rootThread = 0;                  // 当 m_userCaller = true 时，调度器所在线程的线程id
     bool m_stopping = false;                    // 是否正在停止
 };

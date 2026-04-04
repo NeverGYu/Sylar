@@ -5,7 +5,6 @@
 namespace sylar{
 namespace db{
 
-static sylar::Logger::ptr g_logger = SYLAR_LOG_NAME("system");
 
 DbConnectionPool::DbConnectionPool()
     : m_checkthread(std::bind(&DbConnectionPool::checkConnections, this), "check_thread")
@@ -109,14 +108,14 @@ void DbConnectionPool::checkConnections()
         {
             std::vector<DbConnection::ptr> connsTocheck;
             {
-                RWMutexType::WriteLock lock(m_mutex);
+                RWMutexType::ReadLock lock(m_mutex);
                 if (m_dbconnections.empty())
                 {
                     std::this_thread::sleep_for(std::chrono::seconds(1));
                     continue;
                 }
                 auto temp = m_dbconnections;
-                while(temp.empty())
+                while(!temp.empty())
                 {
                     connsTocheck.push_back(temp.front());
                     temp.pop();    

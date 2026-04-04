@@ -40,7 +40,7 @@ using StackAllocator = MallocStackAllocator;
 /**
  *  @brief 无参构造函数
  *  @details 该构造函数主要创建线程的第一个协程，该协程为线程的主协程
- *           同时这个协程只可以有GetThis获得
+ *           同时这个协程只可以由GetThis获得
  */
 Fiber::Fiber()
 {
@@ -102,7 +102,7 @@ Fiber::~Fiber()
         Fiber* cur = t_fiber;     // 当前协程就是自己
         if (cur == this)
         {
-             SetThis(nullptr);
+            SetThis(nullptr);
         }
     }
     

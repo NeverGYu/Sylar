@@ -79,7 +79,7 @@ public:
     /**
      * @brief 日志级别转字符串
      * @param Level 日志级别
-     * @return string   字符串形式的日志级别
+     * @return string  字符串形式的日志级别
      */
     static const char* LevelToString(LogLevel::Level level);
 

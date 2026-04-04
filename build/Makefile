@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/gch/sylar
+CMAKE_SOURCE_DIR = /root/workspace/sylar
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/gch/sylar/build
+CMAKE_BINARY_DIR = /root/workspace/sylar/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/gch/sylar/build/CMakeFiles /home/gch/sylar/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/workspace/sylar/build/CMakeFiles /root/workspace/sylar/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/gch/sylar/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/workspace/sylar/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -323,6 +323,19 @@ test_macro: cmake_check_build_system
 test_macro/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_macro.dir/build.make CMakeFiles/test_macro.dir/build
 .PHONY : test_macro/fast
+
+#=============================================================================
+# Target rules for targets named test_memory_leak_server
+
+# Build rule for target.
+test_memory_leak_server: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_memory_leak_server
+.PHONY : test_memory_leak_server
+
+# fast build rule for target.
+test_memory_leak_server/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_memory_leak_server.dir/build.make CMakeFiles/test_memory_leak_server.dir/build
+.PHONY : test_memory_leak_server/fast
 
 #=============================================================================
 # Target rules for targets named test_middleware
@@ -838,6 +851,30 @@ test/test_macro.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_macro.dir/build.make CMakeFiles/test_macro.dir/test/test_macro.cpp.s
 .PHONY : test/test_macro.cpp.s
 
+test/test_memory_leak_server.o: test/test_memory_leak_server.cpp.o
+.PHONY : test/test_memory_leak_server.o
+
+# target to build an object file
+test/test_memory_leak_server.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_memory_leak_server.dir/build.make CMakeFiles/test_memory_leak_server.dir/test/test_memory_leak_server.cpp.o
+.PHONY : test/test_memory_leak_server.cpp.o
+
+test/test_memory_leak_server.i: test/test_memory_leak_server.cpp.i
+.PHONY : test/test_memory_leak_server.i
+
+# target to preprocess a source file
+test/test_memory_leak_server.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_memory_leak_server.dir/build.make CMakeFiles/test_memory_leak_server.dir/test/test_memory_leak_server.cpp.i
+.PHONY : test/test_memory_leak_server.cpp.i
+
+test/test_memory_leak_server.s: test/test_memory_leak_server.cpp.s
+.PHONY : test/test_memory_leak_server.s
+
+# target to generate assembly for a file
+test/test_memory_leak_server.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_memory_leak_server.dir/build.make CMakeFiles/test_memory_leak_server.dir/test/test_memory_leak_server.cpp.s
+.PHONY : test/test_memory_leak_server.cpp.s
+
 test/test_middleware.o: test/test_middleware.cpp.o
 .PHONY : test/test_middleware.o
 
@@ -1079,6 +1116,7 @@ help:
 	@echo "... test_iomanager"
 	@echo "... test_log"
 	@echo "... test_macro"
+	@echo "... test_memory_leak_server"
 	@echo "... test_middleware"
 	@echo "... test_schedule"
 	@echo "... test_socket"
@@ -1136,6 +1174,9 @@ help:
 	@echo "... test/test_macro.o"
 	@echo "... test/test_macro.i"
 	@echo "... test/test_macro.s"
+	@echo "... test/test_memory_leak_server.o"
+	@echo "... test/test_memory_leak_server.i"
+	@echo "... test/test_memory_leak_server.s"
 	@echo "... test/test_middleware.o"
 	@echo "... test/test_middleware.i"
 	@echo "... test/test_middleware.s"

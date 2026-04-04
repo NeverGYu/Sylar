@@ -10,6 +10,14 @@ list(REMOVE_ITEM SRC_LIST "${CMAKE_CURRENT_SOURCE_DIR}/main.cpp")
 # 生成静态库
 add_library(lsylar ${BASE_SRC} ${HTTP_SRC} ${STREAM_SRC} ${MIDDLE_SRC} ${DB_SRC} ${SSL_SRC})
 
+set(YAML_CPP_LIB yaml-cpp)
+if(TARGET yaml-cpp::yaml-cpp)
+    set(YAML_CPP_LIB yaml-cpp::yaml-cpp)
+elseif(TARGET yaml-cpp)
+    set(YAML_CPP_LIB yaml-cpp)
+endif()
+
+
 # 链接头文件
 target_include_directories(lsylar PUBLIC 
             ${CMAKE_SOURCE_DIR}/include/base
@@ -25,10 +33,11 @@ target_include_directories(lsylar PUBLIC
 # 声明依赖（PUBLIC 传递到上层, PRIVATE 只能本层使用）
 target_link_libraries(lsylar PUBLIC
     dl
-    yaml-cpp::yaml-cpp 
+    ${YAML_CPP_LIB}
     pthread
     ssl 
     crypto
+    mysqlcppconn
     )     
 
 # 生成动态库

@@ -1,7 +1,7 @@
 src/CMakeFiles/lsylar.dir/http/http_parser_template.c.o: \
- /home/gch/sylar/src/http/http_parser_template.c \
+ /root/workspace/sylar/src/http/http_parser_template.c \
  /usr/include/stdc-predef.h \
- /home/gch/sylar/include/http/http-parser/../http-parser/http_parser_template.h \
+ /root/workspace/sylar/include/http/http-parser/../http-parser/http_parser_template.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \

@@ -27,7 +27,7 @@ DbConnection::DbConnection(const std::string& host, const std::string& user, con
             std::unique_ptr<sql::Statement> stmt(m_dbconnection->createStatement());
             stmt->execute("SET NAMES utf8mb4");
             
-            SYLAR_LOG_ERROR(g_logger) << "Database connection established";
+            SYLAR_LOG_INFO(g_logger) << "Database connection established";
         }
         
     }
@@ -137,7 +137,7 @@ bool DbConnection::ping()
     {
         // 不使用 getStmt，直接创建新的语句
         std::unique_ptr<sql::Statement> stmt(m_dbconnection->createStatement());
-        std::unique_ptr<sql::ResultSet> rs(stmt->executeQuery("SELECT 1"));
+        std::unique_ptr<sql::ResultSet> rs(stmt->executeQuery("SELECT 1 limit 1"));
         return true;
     } 
     catch (const sql::SQLException& e) 
