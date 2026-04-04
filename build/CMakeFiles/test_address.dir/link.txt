@@ -1,1 +1,0 @@
-/usr/bin/g++  -g -rdynamic -fPIC -g CMakeFiles/test_address.dir/test/test_address.cpp.o -o ../bin/exe/test_address  -Wl,-rpath,/usr/local/lib src/liblsylar.a -ldl /usr/local/lib/libyaml-cpp.so.0.8.0 -lpthread -lssl -lcrypto 

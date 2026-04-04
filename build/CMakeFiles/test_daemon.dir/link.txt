@@ -1,1 +1,0 @@
-/usr/bin/g++  -g -rdynamic -fPIC -g CMakeFiles/test_daemon.dir/test/test_daemon.cpp.o -o ../bin/exe/test_daemon  -Wl,-rpath,/usr/local/lib src/liblsylar.a -ldl /usr/local/lib/libyaml-cpp.so.0.8.0 -lpthread -lssl -lcrypto 

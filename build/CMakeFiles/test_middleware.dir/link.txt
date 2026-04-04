@@ -1,1 +1,0 @@
-/usr/bin/g++  -g -rdynamic -fPIC -g CMakeFiles/test_middleware.dir/test/test_middleware.cpp.o -o ../bin/exe/test_middleware  -Wl,-rpath,/usr/local/lib src/liblsylar.a -ldl /usr/local/lib/libyaml-cpp.so.0.8.0 -lpthread -lssl -lcrypto 

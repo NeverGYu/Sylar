@@ -1,1 +1,0 @@
-/usr/bin/g++  -g -rdynamic -fPIC -g CMakeFiles/test_timer.dir/test/test_timer.cpp.o -o ../bin/exe/test_timer  -Wl,-rpath,/usr/local/lib src/liblsylar.a -ldl /usr/local/lib/libyaml-cpp.so.0.8.0 -lpthread -lssl -lcrypto 

@@ -1,1 +1,0 @@
-/usr/bin/g++  -g -rdynamic -fPIC -g CMakeFiles/my_http_server.dir/test/my_http_server.cpp.o -o ../bin/exe/my_http_server  -Wl,-rpath,/usr/local/lib src/liblsylar.a -ldl /usr/local/lib/libyaml-cpp.so.0.8.0 -lpthread -lssl -lcrypto 
